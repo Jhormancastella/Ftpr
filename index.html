@@ -6,10 +6,8 @@
     <title>Fondo Virtual 720p - Cámara</title>
 
     <!-- Librerías de MediaPipe -->
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js" crossorigin="anonymous"></script>
 
     <style>
         * {
@@ -56,7 +54,6 @@
             display: inline-block;
             width: 100%;
             max-width: 720px;
-            /* Mantiene ratio 16:9 */
             aspect-ratio: 16 / 9;
             margin-bottom: 20px;
             box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
@@ -68,11 +65,9 @@
             background: #222;
             object-fit: contain;
         }
-        /* Ocultamos el video, solo lo usamos para alimentar el modelo */
         #videoFeed {
             display: none;
         }
-
         .controls {
             display: flex;
             flex-wrap: wrap;
@@ -122,7 +117,6 @@
             cursor: not-allowed;
             transform: none;
         }
-
         .download-section {
             display: flex;
             flex-wrap: wrap;
@@ -173,32 +167,18 @@
             margin-top: 4px;
             display: block;
         }
-
         .info {
             color: #88aaff;
             font-size: 0.85rem;
             margin-top: 5px;
         }
-        .loading {
-            color: #f9ca24;
-            font-weight: bold;
-        }
         #statusMsg {
             min-height: 24px;
         }
-
-        /* Responsive */
         @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-            .download-card {
-                width: 140px;
-            }
-            .btn-capture {
-                padding: 10px 25px;
-                font-size: 1rem;
-            }
+            .container { padding: 15px; }
+            .download-card { width: 140px; }
+            .btn-capture { padding: 10px 25px; font-size: 1rem; }
         }
     </style>
 </head>
@@ -226,7 +206,6 @@
             <button class="btn-capture" id="captureBtn" disabled>📸 Capturar y guardar todo</button>
         </div>
 
-        <!-- Aquí se mostrarán las previsualizaciones y descargas -->
         <div class="download-section" id="downloadSection">
             <div class="download-card">
                 <img id="previewOriginal" src="" alt="Original" />
@@ -264,12 +243,12 @@
         const dlRef = document.getElementById('downloadReference');
 
         // --- Variables de estado ---
-        let backgroundImage = null; // Imagen cargada por el usuario
+        let backgroundImage = null;
         let bgColor = '#1a1a2e';
         let isModelReady = false;
-        let canvasWidth = 1280;
-        let canvasHeight = 720;
-        let lastVideoFrame = null; // Para guardar el fotograma original
+        const canvasWidth = 1280;
+        const canvasHeight = 720;
+        let lastVideoFrame = null;
 
         // --- 1. Inicializar MediaPipe Selfie Segmentation ---
         const selfieSegmentation = new SelfieSegmentation({
@@ -279,49 +258,34 @@
         });
 
         selfieSegmentation.setOptions({
-            modelSelection: 0, // 0 = general, 1 = landscape (mejor para cuerpo completo)
+            modelSelection: 0,
             minDetectionConfidence: 0.7,
         });
 
-        // --- 2. Función principal de dibujo (se ejecuta en cada fotograma) ---
+        // --- 2. Función principal de dibujo (Optimizada para GPU/CPU limitada) ---
         function drawResults(results) {
             if (!results || !results.segmentationMask) {
-                // Si no hay máscara, mostramos un placeholder
                 ctx.fillStyle = '#222';
                 ctx.fillRect(0, 0, canvasWidth, canvasHeight);
                 return;
             }
 
-            // 2a. Guardar el fotograma original para la captura
-            lastVideoFrame = new ImageData(
-                new Uint8ClampedArray(results.imageData.data),
-                results.imageData.width,
-                results.imageData.height
-            );
+            // 2a. Capturar el frame original antes de modificar el canvas
+            ctx.drawImage(video, 0, 0, canvasWidth, canvasHeight);
+            lastVideoFrame = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
 
-            // 2b. Crear un canvas temporal para aislar a la persona usando la máscara
-            const tempCanvas = document.createElement('canvas');
-            tempCanvas.width = canvasWidth;
-            tempCanvas.height = canvasHeight;
-            const tempCtx = tempCanvas.getContext('2d');
+            // 2b. Limpiar el canvas para aplicar la segmentación
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-            // Dibujar el video en el canvas temporal
-            tempCtx.drawImage(video, 0, 0, canvasWidth, canvasHeight);
+            // 2c. Dibujar la máscara de segmentación (es un objeto dibujable, no ImageData)
+            ctx.drawImage(results.segmentationMask, 0, 0, canvasWidth, canvasHeight);
 
-            // Aplicar la máscara (solo mantener la persona)
-            const maskCanvas = document.createElement('canvas');
-            maskCanvas.width = canvasWidth;
-            maskCanvas.height = canvasHeight;
-            const maskCtx = maskCanvas.getContext('2d');
-            // La máscara viene como ImageData en results.segmentationMask
-            maskCtx.putImageData(results.segmentationMask, 0, 0);
+            // 2d. Aislar a la persona: 'source-in' mantiene solo los píxeles del video que coinciden con la máscara
+            ctx.globalCompositeOperation = 'source-in';
+            ctx.drawImage(video, 0, 0, canvasWidth, canvasHeight);
 
-            // Usamos 'source-in' para recortar la persona
-            tempCtx.globalCompositeOperation = 'source-in';
-            tempCtx.drawImage(maskCanvas, 0, 0);
-
-            // 2c. Dibujar el fondo en el canvas principal
-            // Si el usuario subió imagen, la usamos; si no, usamos el color sólido
+            // 2e. Dibujar el fondo detrás de la persona: 'destination-over' dibuja debajo del contenido actual
+            ctx.globalCompositeOperation = 'destination-over';
             if (backgroundImage) {
                 ctx.drawImage(backgroundImage, 0, 0, canvasWidth, canvasHeight);
             } else {
@@ -329,8 +293,8 @@
                 ctx.fillRect(0, 0, canvasWidth, canvasHeight);
             }
 
-            // 2d. Dibujar la persona (recortada) encima del fondo
-            ctx.drawImage(tempCanvas, 0, 0);
+            // 2f. Restaurar la operación de composición por defecto para el siguiente frame
+            ctx.globalCompositeOperation = 'source-over';
         }
 
         // --- 3. Configurar el pipeline de MediaPipe ---
@@ -343,7 +307,7 @@
                     try {
                         await selfieSegmentation.send({ image: video });
                     } catch (e) {
-                        // Silencioso si falla algún frame
+                        console.warn("Error en frame de MediaPipe:", e);
                     }
                 }
             },
@@ -352,8 +316,7 @@
         });
 
         camera.start().then(() => {
-            statusMsg.innerHTML = '✅ Cámara activa. Cargando modelo...';
-            // El modelo se carga de forma asíncrona. Esperamos un poco.
+            statusMsg.innerHTML = '✅ Cámara activa. Cargando modelo de IA...';
             setTimeout(() => {
                 isModelReady = true;
                 captureBtn.disabled = false;
@@ -361,12 +324,10 @@
             }, 1500);
         }).catch((err) => {
             statusMsg.innerHTML = '❌ Error al acceder a la cámara: ' + err.message;
-            console.error(err);
+            console.error("Error detallado de la cámara:", err);
         });
 
         // --- 5. Controles de fondo ---
-
-        // Subir imagen de fondo
         bgUpload.addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (!file) return;
@@ -382,49 +343,34 @@
             reader.readAsDataURL(file);
         });
 
-        // Cambiar color de fondo
         colorBg.addEventListener('input', (e) => {
             bgColor = e.target.value;
-            // Si hay imagen cargada, la removemos para que prevalezca el color
             if (backgroundImage) {
-                // Preguntamos al usuario si quiere quitar la imagen
                 if (confirm('¿Quitar la imagen de fondo y usar solo el color?')) {
                     backgroundImage = null;
                     statusMsg.innerHTML = '🎨 Fondo sólido seleccionado.';
                 } else {
-                    // Revertimos el color al anterior
                     colorBg.value = bgColor;
                 }
             }
         });
 
         // --- 6. Función para capturar y guardar TODO en 720p ---
-
         function captureAndSave() {
             if (!lastVideoFrame) {
                 alert('Aún no hay imagen de la cámara. Espera un momento.');
                 return;
             }
 
-            // 6a. Crear canvas de 720p para las salidas
-            const outCanvas = document.createElement('canvas');
-            outCanvas.width = 1280;
-            outCanvas.height = 720;
-            const outCtx = outCanvas.getContext('2d');
-
-            // --- ORIGINAL (sin fondo editado) ---
-            // Volcar el fotograma original guardado
+            // ORIGINAL
             const origCanvas = document.createElement('canvas');
             origCanvas.width = 1280;
             origCanvas.height = 720;
             const origCtx = origCanvas.getContext('2d');
-            // lastVideoFrame es ImageData, lo ponemos directamente
             origCtx.putImageData(lastVideoFrame, 0, 0);
             const originalBlob = dataURLToBlob(origCanvas.toDataURL('image/jpeg', 0.95));
 
-            // --- EDITADA (con fondo cambiado) ---
-            // El canvas principal (mainCanvas) ya tiene el fondo cambiado en vivo
-            // Pero necesitamos asegurarnos de que esté a 720p exacto.
+            // EDITADA
             const editCanvas = document.createElement('canvas');
             editCanvas.width = 1280;
             editCanvas.height = 720;
@@ -432,26 +378,23 @@
             editCtx.drawImage(canvas, 0, 0, 1280, 720);
             const editedBlob = dataURLToBlob(editCanvas.toDataURL('image/jpeg', 0.95));
 
-            // --- REFERENCIA (lado a lado: Original | Editada) ---
+            // REFERENCIA (Lado a lado)
             const refCanvas = document.createElement('canvas');
-            refCanvas.width = 2560; // 1280 * 2
+            refCanvas.width = 2560;
             refCanvas.height = 720;
             const refCtx = refCanvas.getContext('2d');
-            // Fondo oscuro para separar
             refCtx.fillStyle = '#111';
             refCtx.fillRect(0, 0, 2560, 720);
-            // Dibujar original a la izquierda
             refCtx.drawImage(origCanvas, 0, 0);
-            // Dibujar editada a la derecha
             refCtx.drawImage(editCanvas, 1280, 0);
-            // Línea divisoria blanca
+            
             refCtx.strokeStyle = '#e94560';
             refCtx.lineWidth = 4;
             refCtx.beginPath();
             refCtx.moveTo(1280, 0);
             refCtx.lineTo(1280, 720);
             refCtx.stroke();
-            // Texto (opcional)
+            
             refCtx.font = 'bold 28px Segoe UI';
             refCtx.fillStyle = '#fff';
             refCtx.shadowColor = 'rgba(0,0,0,0.8)';
@@ -461,7 +404,6 @@
             refCtx.shadowBlur = 0;
             const refBlob = dataURLToBlob(refCanvas.toDataURL('image/jpeg', 0.95));
 
-            // --- 6b. Generar descargas y previsualizaciones ---
             createDownload(originalBlob, dlOrig, previewOrig);
             createDownload(editedBlob, dlEdit, previewEdit);
             createDownload(refBlob, dlRef, previewRef);
@@ -470,7 +412,6 @@
         }
 
         // --- Funciones auxiliares ---
-
         function dataURLToBlob(dataURL) {
             const parts = dataURL.split(';base64,');
             const contentType = parts[0].split(':')[1];
@@ -486,21 +427,10 @@
         function createDownload(blob, anchorElement, imgPreview) {
             const url = URL.createObjectURL(blob);
             anchorElement.href = url;
-            // Actualizar previsualización
             imgPreview.src = url;
-            // Forzar descarga al hacer click (ya tiene el atributo download)
-            // Pero si queremos que se descargue automáticamente al hacer click en el botón general,
-            // mejor no forzamos el click aquí, solo dejamos el enlace listo.
-            // El usuario hará clic en cada enlace.
         }
 
-        // Botón capturar
         captureBtn.addEventListener('click', captureAndSave);
-
-        // --- 7. Inicializar previsualizaciones vacías ---
-        previewOrig.src = '';
-        previewEdit.src = '';
-        previewRef.src = '';
 
         console.log('🚀 App de fondo virtual 720p lista.');
     </script>
