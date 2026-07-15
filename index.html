@@ -114,12 +114,12 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(10, 10, 26, 0.95);
+            background: rgba(10, 10, 26, 0.97);
             backdrop-filter: blur(20px);
             border-top: 1px solid var(--border);
             border-radius: 20px 20px 0 0;
             padding: 16px;
-            max-height: 60vh;
+            max-height: 65vh;
             overflow-y: auto;
             transform: translateY(calc(100% - 60px));
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -165,10 +165,7 @@
             gap: 8px;
         }
 
-        .header-actions {
-            display: flex;
-            gap: 8px;
-        }
+        .header-actions { display: flex; gap: 8px; }
 
         .icon-btn {
             width: 40px;
@@ -185,15 +182,8 @@
             transition: all 0.2s;
         }
 
-        .icon-btn:hover, .icon-btn:active {
-            background: var(--primary);
-            transform: scale(1.05);
-        }
-
-        .icon-btn.active {
-            background: var(--primary);
-            color: #fff;
-        }
+        .icon-btn:hover, .icon-btn:active { background: var(--primary); transform: scale(1.05); }
+        .icon-btn.active { background: var(--primary); color: #fff; }
 
         /* ===== CAMERA WRAPPER PC ===== */
         body.desktop-mode .camera-wrapper {
@@ -220,10 +210,7 @@
         /* ===== OVERLAYS ===== */
         .camera-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             pointer-events: none;
             display: flex;
             flex-direction: column;
@@ -231,9 +218,7 @@
             padding: 12px;
         }
 
-        .camera-overlay > * {
-            pointer-events: auto;
-        }
+        .camera-overlay > * { pointer-events: auto; }
 
         .overlay-top {
             display: flex;
@@ -249,7 +234,6 @@
             padding-bottom: 8px;
         }
 
-        /* Capture button mobile */
         .btn-shutter {
             width: 72px;
             height: 72px;
@@ -266,20 +250,11 @@
             box-shadow: 0 4px 20px rgba(233, 69, 96, 0.4);
         }
 
-        .btn-shutter:active {
-            transform: scale(0.9);
-            box-shadow: 0 2px 10px rgba(233, 69, 96, 0.3);
-        }
-
-        .btn-shutter:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
+        .btn-shutter:active { transform: scale(0.9); }
+        .btn-shutter:disabled { opacity: 0.4; cursor: not-allowed; }
 
         /* ===== SECTIONS ===== */
-        .section {
-            margin-bottom: 20px;
-        }
+        .section { margin-bottom: 20px; }
 
         .section-title {
             font-size: 0.75rem;
@@ -318,20 +293,12 @@
             white-space: nowrap;
         }
 
-        .cam-chip:hover {
-            border-color: var(--primary);
-        }
-
-        .cam-chip.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: #fff;
-        }
+        .cam-chip:hover { border-color: var(--primary); }
+        .cam-chip.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+        .cam-chip:disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
 
         /* ===== CONTROLES ===== */
-        .control-group {
-            margin-bottom: 16px;
-        }
+        .control-group { margin-bottom: 16px; }
 
         .control-label {
             display: flex;
@@ -341,10 +308,7 @@
             margin-bottom: 6px;
         }
 
-        .control-value {
-            color: var(--text);
-            font-weight: 600;
-        }
+        .control-value { color: var(--text); font-weight: 600; }
 
         input[type="range"] {
             width: 100%;
@@ -359,8 +323,7 @@
 
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
+            width: 18px; height: 18px;
             border-radius: 50%;
             background: var(--primary);
             cursor: pointer;
@@ -368,22 +331,9 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
 
-        input[type="range"]::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--primary);
-            cursor: pointer;
-            border: 2px solid #fff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
+        input[type="range"]:disabled { opacity: 0.4; cursor: not-allowed; }
 
-        input[type="range"]:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        /* ===== BOTONES DE ACCIÓN ===== */
+        /* ===== BOTONES ===== */
         .btn-primary {
             width: 100%;
             padding: 14px;
@@ -401,38 +351,24 @@
             gap: 8px;
         }
 
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-        }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-        .btn-primary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
+        .toggle-row { display: flex; gap: 8px; margin-bottom: 12px; }
 
-        .btn-secondary {
-            width: 100%;
-            padding: 12px;
-            border-radius: 12px;
+        .toggle-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
             border: 1px solid var(--border);
             background: var(--bg-surface);
-            color: var(--text);
-            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 8px;
         }
 
-        .btn-secondary:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
+        .toggle-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
 
         /* ===== FONDO ===== */
         .bg-options {
@@ -448,20 +384,13 @@
             border: 2px solid transparent;
             cursor: pointer;
             transition: all 0.2s;
-            position: relative;
         }
 
-        .bg-color-swatch:hover {
-            transform: scale(1.05);
-        }
-
-        .bg-color-swatch.active {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px var(--primary);
-        }
+        .bg-color-swatch:hover { transform: scale(1.05); }
+        .bg-color-swatch.active { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary); }
 
         .bg-color-swatch.checkered {
-            background: 
+            background:
                 linear-gradient(45deg, #333 25%, transparent 25%),
                 linear-gradient(-45deg, #333 25%, transparent 25%),
                 linear-gradient(45deg, transparent 75%, #333 75%),
@@ -482,11 +411,7 @@
             font-size: 0.85rem;
         }
 
-        .upload-area:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
+        .upload-area:hover { border-color: var(--primary); color: var(--primary); }
         .upload-area input { display: none; }
 
         /* ===== STATUS ===== */
@@ -494,7 +419,7 @@
             padding: 10px 14px;
             border-radius: 10px;
             font-size: 0.85rem;
-            margin-bottom: 16px;
+            margin-top: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -514,63 +439,28 @@
             border-top: 1px solid var(--border);
         }
 
-        .download-section.show {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
+        .download-section.show { display: grid; grid-template-columns: 1fr 1fr; }
 
-        .download-card {
-            background: var(--bg-surface);
-            border-radius: 12px;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .download-card img {
-            width: 100%;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-            display: block;
-            background: #222;
-        }
-
-        .download-card a {
-            display: block;
-            padding: 10px;
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
+        .download-card { background: var(--bg-surface); border-radius: 12px; overflow: hidden; text-align: center; }
+        .download-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: #222; }
+        .download-card a { display: block; padding: 10px; color: var(--primary); text-decoration: none; font-size: 0.8rem; font-weight: 600; }
 
         /* ===== FULLSCREEN ===== */
-        body.mobile-mode.fullscreen .app-header {
-            display: none;
-        }
-
-        body.mobile-mode.fullscreen .sidebar {
-            display: none;
-        }
-
+        body.mobile-mode.fullscreen .app-header { display: none; }
+        body.mobile-mode.fullscreen .sidebar { display: none; }
         body.mobile-mode.fullscreen .camera-wrapper {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            height: 100dvh;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh; height: 100dvh;
             z-index: 9999;
         }
 
-        /* Botón flotante para salir de fullscreen */
         .exit-fs-btn {
             position: fixed;
-            top: 16px;
-            right: 16px;
+            top: 16px; right: 16px;
             z-index: 10000;
             display: none;
-            width: 44px;
-            height: 44px;
+            width: 44px; height: 44px;
             border-radius: 50%;
             border: none;
             background: rgba(0,0,0,0.6);
@@ -586,96 +476,52 @@
             justify-content: center;
         }
 
-        /* ===== TOGGLE PC/MOBILE ===== */
-        .toggle-row {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .toggle-btn {
-            flex: 1;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--bg-surface);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .toggle-btn.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: #fff;
-        }
-
-        /* ===== RESPONSIVE PC ===== */
-        @media (max-width: 900px) {
-            body.desktop-mode .app-container {
-                grid-template-columns: 1fr;
-            }
-            body.desktop-mode .sidebar {
-                position: static;
-            }
-        }
-
-        /* ===== ANIMACIONES ===== */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .recording-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--error);
-            animation: pulse 1.5s infinite;
-        }
-
-        /* ===== LOADING SPINNER ===== */
+        /* ===== LOADING ===== */
         .spinner {
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             border: 3px solid var(--border);
             border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
         .loading-overlay {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.75);
             z-index: 10;
         }
 
-        .loading-overlay p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        .loading-overlay p { color: var(--text-muted); font-size: 0.9rem; }
+
+        .recording-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--error);
+            animation: pulse 1.5s infinite;
         }
 
-        /* ===== HIDDEN ===== */
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            body.desktop-mode .app-container { grid-template-columns: 1fr; }
+            body.desktop-mode .sidebar { position: static; }
+        }
+
         .hidden { display: none !important; }
     </style>
 </head>
 <body class="desktop-mode">
 
-    <button class="exit-fs-btn" id="exitFsBtn" title="Salir de pantalla completa">✕</button>
+    <button class="exit-fs-btn" id="exitFsBtn">✕</button>
 
     <div class="app-container">
-        <!-- ÁREA PRINCIPAL -->
         <div class="main-area">
             <div class="app-header">
                 <h1>🎥 Fondo Virtual Pro</h1>
@@ -687,22 +533,21 @@
 
             <div class="camera-wrapper" id="cameraWrapper">
                 <canvas id="mainCanvas" width="1280" height="720"></canvas>
+                <!-- Un solo elemento <video> — MediaPipe lo lee directo -->
                 <video id="videoFeed" width="1280" height="720" autoplay playsinline muted></video>
 
                 <div class="loading-overlay" id="loadingOverlay">
                     <div class="spinner"></div>
-                    <p id="loadingText">Iniciando cámara...</p>
+                    <p id="loadingText">Iniciando...</p>
                 </div>
 
                 <div class="camera-overlay" id="cameraOverlay">
                     <div class="overlay-top">
                         <div style="display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.5);padding:6px 12px;border-radius:20px;font-size:0.75rem;">
-                            <div class="recording-dot" id="recordingDot"></div>
+                            <div class="recording-dot" id="recordingDot" style="display:none;"></div>
                             <span id="fpsCounter">-- fps</span>
                         </div>
-                        <div style="display:flex;gap:6px;">
-                            <button class="icon-btn" id="mobileSwitchCam" title="Cambiar cámara" style="display:none;width:36px;height:36px;font-size:1rem;">🔄</button>
-                        </div>
+                        <button class="icon-btn" id="mobileSwitchCam" style="display:none;width:36px;height:36px;font-size:1rem;" title="Cambiar cámara">🔄</button>
                     </div>
                     <div class="overlay-bottom" id="mobileControls" style="display:none;">
                         <button class="icon-btn" id="mobileSettingsBtn" title="Ajustes">⚙️</button>
@@ -712,87 +557,65 @@
                 </div>
             </div>
 
-            <!-- Status -->
-            <div id="statusMsg" class="status-info" style="margin-top:12px;">⏳ Verificando entorno...</div>
+            <div id="statusMsg" class="status-info">⏳ Verificando entorno...</div>
         </div>
 
-        <!-- SIDEBAR / PANEL DE CONTROLES -->
         <div class="sidebar" id="sidebar">
             <div class="sidebar-handle" id="sidebarHandle"></div>
 
-            <!-- Selector de Cámara -->
             <div class="section">
                 <div class="section-title">📷 Cámaras disponibles</div>
                 <div class="camera-selector" id="cameraSelector">
-                    <div class="cam-chip active" data-device="default">🎥 Default</div>
+                    <div class="cam-chip active">🎥 Detectando...</div>
                 </div>
             </div>
 
-            <!-- Configuración de Cámara (Avanzada) -->
             <div class="section" id="cameraSettingsSection">
                 <div class="section-title">⚙️ Configuración de cámara</div>
 
-                <div class="control-group" id="zoomControl">
-                    <div class="control-label">
-                        <span>Zoom</span>
-                        <span class="control-value" id="zoomValue">1.0x</span>
-                    </div>
-                    <input type="range" id="zoomSlider" min="1" max="10" step="0.1" value="1" disabled>
+                <div class="control-group" id="zoomControl" style="display:none;">
+                    <div class="control-label"><span>Zoom</span><span class="control-value" id="zoomValue">1.0x</span></div>
+                    <input type="range" id="zoomSlider" min="1" max="10" step="0.1" value="1">
                 </div>
 
-                <div class="control-group" id="isoControl">
-                    <div class="control-label">
-                        <span>ISO</span>
-                        <span class="control-value" id="isoValue">Auto</span>
-                    </div>
-                    <input type="range" id="isoSlider" min="50" max="3200" step="50" value="100" disabled>
+                <div class="control-group" id="exposureControl" style="display:none;">
+                    <div class="control-label"><span>Exposición</span><span class="control-value" id="exposureValue">0</span></div>
+                    <input type="range" id="exposureSlider" min="-10" max="10" step="0.5" value="0">
                 </div>
 
-                <div class="control-group" id="exposureControl">
-                    <div class="control-label">
-                        <span>Exposición</span>
-                        <span class="control-value" id="exposureValue">0</span>
-                    </div>
-                    <input type="range" id="exposureSlider" min="-10" max="10" step="0.5" value="0" disabled>
+                <div class="control-group" id="wbControl" style="display:none;">
+                    <div class="control-label"><span>Balance de blancos</span><span class="control-value" id="wbValue">Auto</span></div>
+                    <input type="range" id="wbSlider" min="2500" max="9000" step="100" value="4500">
                 </div>
 
-                <div class="control-group" id="wbControl">
-                    <div class="control-label">
-                        <span>Balance de blancos</span>
-                        <span class="control-value" id="wbValue">Auto</span>
-                    </div>
-                    <input type="range" id="wbSlider" min="2500" max="9000" step="100" value="4500" disabled>
+                <div class="control-group" id="brightnessControl" style="display:none;">
+                    <div class="control-label"><span>Brillo</span><span class="control-value" id="brightnessValue">0</span></div>
+                    <input type="range" id="brightnessSlider" min="-100" max="100" step="1" value="0">
                 </div>
 
-                <div class="control-group" id="brightnessControl">
-                    <div class="control-label">
-                        <span>Brillo</span>
-                        <span class="control-value" id="brightnessValue">0</span>
-                    </div>
-                    <input type="range" id="brightnessSlider" min="-100" max="100" step="1" value="0" disabled>
-                </div>
-
-                <div class="control-group" id="contrastControl">
-                    <div class="control-label">
-                        <span>Contraste</span>
-                        <span class="control-value" id="contrastValue">0</span>
-                    </div>
-                    <input type="range" id="contrastSlider" min="-100" max="100" step="1" value="0" disabled>
+                <div class="control-group" id="contrastControl" style="display:none;">
+                    <div class="control-label"><span>Contraste</span><span class="control-value" id="contrastValue">0</span></div>
+                    <input type="range" id="contrastSlider" min="-100" max="100" step="1" value="0">
                 </div>
 
                 <div class="toggle-row">
-                    <button class="toggle-btn" id="torchBtn">🔦 Flash</button>
-                    <button class="toggle-btn" id="focusBtn">🔍 Auto-focus</button>
+                    <button class="toggle-btn" id="torchBtn" style="display:none;">🔦 Flash</button>
+                    <button class="toggle-btn" id="focusBtn" style="display:none;">🔍 Enfocar</button>
                 </div>
+
+                <p id="noControlsMsg" style="color:var(--text-muted);font-size:0.8rem;">Los controles avanzados dependen del hardware. En PC suelen estar limitados.</p>
             </div>
 
-            <!-- Fondo -->
             <div class="section">
                 <div class="section-title">🎨 Fondo</div>
                 <div class="bg-options" id="bgOptions">
                     <div class="bg-color-swatch active" data-color="#1a1a2e" style="background:#1a1a2e;" title="Azul oscuro"></div>
                     <div class="bg-color-swatch" data-color="#0a0a0a" style="background:#0a0a0a;" title="Negro"></div>
                     <div class="bg-color-swatch" data-color="#2d1b4e" style="background:#2d1b4e;" title="Púrpura"></div>
+                    <div class="bg-color-swatch" data-color="#0d2b1a" style="background:#0d2b1a;" title="Verde oscuro"></div>
+                    <div class="bg-color-swatch" data-color="#1a0d0d" style="background:#1a0d0d;" title="Rojo oscuro"></div>
+                    <div class="bg-color-swatch" data-color="#ffffff" style="background:#ffffff;" title="Blanco"></div>
+                    <div class="bg-color-swatch" data-color="#00ff00" style="background:#00ff00;" title="Chroma green"></div>
                     <div class="bg-color-swatch checkered" data-color="transparent" title="Transparente"></div>
                 </div>
                 <label class="upload-area" for="bgUpload">
@@ -801,691 +624,622 @@
                 </label>
             </div>
 
-            <!-- Captura PC -->
             <div class="section" id="pcCaptureSection">
-                <button class="btn-primary" id="captureBtn" disabled>
-                    📸 Capturar foto
-                </button>
+                <button class="btn-primary" id="captureBtn" disabled>📸 Capturar foto</button>
             </div>
 
-            <!-- Descargas -->
             <div class="download-section" id="downloadSection">
                 <div class="download-card">
                     <img id="previewOriginal" src="" alt="Original" />
-                    <a id="downloadOriginal" href="#" download="original_720p.jpg">Descargar Original</a>
+                    <a id="downloadOriginal" href="#" download="original_720p.jpg">⬇ Original</a>
                 </div>
                 <div class="download-card">
                     <img id="previewEdited" src="" alt="Editada" />
-                    <a id="downloadEdited" href="#" download="editada_720p.jpg">Descargar Editada</a>
+                    <a id="downloadEdited" href="#" download="editada_720p.jpg">⬇ Editada</a>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // ==================== VARIABLES GLOBALES ====================
-        const video = document.getElementById('videoFeed');
-        const canvas = document.getElementById('mainCanvas');
-        const ctx = canvas.getContext('2d');
-        const statusMsg = document.getElementById('statusMsg');
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        const loadingText = document.getElementById('loadingText');
-        const cameraWrapper = document.getElementById('cameraWrapper');
-        const cameraOverlay = document.getElementById('cameraOverlay');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarHandle = document.getElementById('sidebarHandle');
-        const body = document.body;
+    // ==================== CONFIG ====================
+    // FIX RENDIMIENTO #1: Reducir resolución de proceso de IA
+    // MediaPipe no necesita 1280x720 — 640x360 da el mismo resultado visualmente
+    // y es 4x menos píxeles a procesar
+    const PROCESS_W = 640;
+    const PROCESS_H = 360;
+    const OUTPUT_W = 1280;
+    const OUTPUT_H = 720;
 
-        // Controles
-        const captureBtn = document.getElementById('captureBtn');
-        const mobileCaptureBtn = document.getElementById('mobileCaptureBtn');
-        const bgUpload = document.getElementById('bgUpload');
-        const cameraSelector = document.getElementById('cameraSelector');
-        const fullscreenBtn = document.getElementById('fullscreenBtn');
-        const rotateBtn = document.getElementById('rotateBtn');
-        const exitFsBtn = document.getElementById('exitFsBtn');
-        const mobileSwitchCam = document.getElementById('mobileSwitchCam');
-        const mobileSettingsBtn = document.getElementById('mobileSettingsBtn');
-        const mobileBgBtn = document.getElementById('mobileBgBtn');
-        const mobileControls = document.getElementById('mobileControls');
-        const pcCaptureSection = document.getElementById('pcCaptureSection');
-        const fpsCounter = document.getElementById('fpsCounter');
-        const recordingDot = document.getElementById('recordingDot');
+    // FIX RENDIMIENTO #2: Throttle de frames — no enviar más de N fps a MediaPipe
+    // Evita que se apile la cola de frames y satura la CPU/GPU
+    const TARGET_FPS = 25;
+    const FRAME_INTERVAL = 1000 / TARGET_FPS;
 
-        // Sliders
-        const zoomSlider = document.getElementById('zoomSlider');
-        const isoSlider = document.getElementById('isoSlider');
-        const exposureSlider = document.getElementById('exposureSlider');
-        const wbSlider = document.getElementById('wbSlider');
-        const brightnessSlider = document.getElementById('brightnessSlider');
-        const contrastSlider = document.getElementById('contrastSlider');
-        const torchBtn = document.getElementById('torchBtn');
-        const focusBtn = document.getElementById('focusBtn');
+    // ==================== DOM ====================
+    const video       = document.getElementById('videoFeed');
+    const canvas      = document.getElementById('mainCanvas');
+    const ctx         = canvas.getContext('2d', { willReadFrequently: false });
+    const statusMsg   = document.getElementById('statusMsg');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const loadingText = document.getElementById('loadingText');
+    const cameraWrapper  = document.getElementById('cameraWrapper');
+    const sidebar        = document.getElementById('sidebar');
+    const sidebarHandle  = document.getElementById('sidebarHandle');
+    const fpsCounter     = document.getElementById('fpsCounter');
+    const recordingDot   = document.getElementById('recordingDot');
+    const captureBtn     = document.getElementById('captureBtn');
+    const mobileCaptureBtn = document.getElementById('mobileCaptureBtn');
+    const bgUpload       = document.getElementById('bgUpload');
+    const cameraSelector = document.getElementById('cameraSelector');
+    const fullscreenBtn  = document.getElementById('fullscreenBtn');
+    const rotateBtn      = document.getElementById('rotateBtn');
+    const exitFsBtn      = document.getElementById('exitFsBtn');
+    const mobileSwitchCam   = document.getElementById('mobileSwitchCam');
+    const mobileSettingsBtn = document.getElementById('mobileSettingsBtn');
+    const mobileBgBtn       = document.getElementById('mobileBgBtn');
+    const mobileControls    = document.getElementById('mobileControls');
+    const pcCaptureSection  = document.getElementById('pcCaptureSection');
+    const noControlsMsg     = document.getElementById('noControlsMsg');
 
-        // State
-        let backgroundImage = null;
-        let bgColor = '#1a1a2e';
-        let isModelReady = false;
-        let isMobile = false;
-        let currentStream = null;
-        let currentDeviceId = null;
-        let imageCapture = null;
-        let track = null;
-        let cameraCapabilities = {};
-        let lastVideoFrame = null;
-        let frameCount = 0;
-        let lastFpsTime = performance.now();
-        let isFullscreen = false;
-        let isLandscape = false;
-        let selfieSegmentation = null;
-        let camera = null;
-        let deviceList = [];
+    // Sliders
+    const zoomSlider       = document.getElementById('zoomSlider');
+    const exposureSlider   = document.getElementById('exposureSlider');
+    const wbSlider         = document.getElementById('wbSlider');
+    const brightnessSlider = document.getElementById('brightnessSlider');
+    const contrastSlider   = document.getElementById('contrastSlider');
+    const torchBtn = document.getElementById('torchBtn');
+    const focusBtn = document.getElementById('focusBtn');
 
-        const canvasWidth = 1280;
-        const canvasHeight = 720;
+    // ==================== STATE ====================
+    let backgroundImage = null;
+    let bgColor = '#1a1a2e';
+    let isMobile = false;
+    let currentStream = null;
+    let currentDeviceId = null;
+    let videoTrack = null;
+    let cameraCapabilities = {};
+    let deviceList = [];
+    let isProcessing = false;       // FIX: bandera para no encolar frames
+    let isSwitching = false;        // FIX: bloqueo durante cambio de cámara
+    let selfieSegmentation = null;
+    let mpCamera = null;            // instancia Camera de MediaPipe
+    let lastFrameTime = 0;
+    let frameCount = 0;
+    let fpsTimestamp = performance.now();
+    let lastSegmentationMask = null; // FIX: reusar la última máscara si llega tarde
 
-        // ==================== DETECTAR DISPOSITIVO ====================
-        function detectDevice() {
-            const ua = navigator.userAgent;
-            isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
-            body.className = isMobile ? 'mobile-mode' : 'desktop-mode';
+    // FIX RENDIMIENTO #3: Canvas de proceso separado (tamaño pequeño)
+    const processCanvas = document.createElement('canvas');
+    processCanvas.width  = PROCESS_W;
+    processCanvas.height = PROCESS_H;
+    const processCtx = processCanvas.getContext('2d', { willReadFrequently: false });
 
-            if (isMobile) {
-                mobileControls.style.display = 'flex';
-                mobileSwitchCam.style.display = 'flex';
-                pcCaptureSection.style.display = 'none';
-                // Forzar landscape en móvil si es posible
-                requestLandscape();
-            } else {
-                mobileControls.style.display = 'none';
-                mobileSwitchCam.style.display = 'none';
-                pcCaptureSection.style.display = 'block';
-            }
+    // ==================== DEVICE DETECT ====================
+    function detectDevice() {
+        isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        document.body.className = isMobile ? 'mobile-mode' : 'desktop-mode';
+        mobileControls.style.display    = isMobile ? 'flex'  : 'none';
+        mobileSwitchCam.style.display   = isMobile ? 'flex'  : 'none';
+        pcCaptureSection.style.display  = isMobile ? 'none'  : 'block';
+        if (isMobile) requestLandscape();
+    }
+
+    // ==================== ORIENTACIÓN ====================
+    function requestLandscape() {
+        screen.orientation?.lock?.('landscape').catch(() => {});
+    }
+
+    function toggleOrientation() {
+        const t = screen.orientation?.type ?? '';
+        screen.orientation?.lock?.(t.includes('landscape') ? 'portrait' : 'landscape').catch(() => {});
+    }
+
+    // ==================== FULLSCREEN ====================
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+            document.body.classList.add('fullscreen');
+        } else {
+            document.exitFullscreen().catch(() => {});
+            document.body.classList.remove('fullscreen');
         }
+    }
 
-        // ==================== ORIENTACIÓN ====================
-        function requestLandscape() {
-            if (screen.orientation && screen.orientation.lock) {
-                screen.orientation.lock('landscape').catch(() => {
-                    console.log('No se pudo bloquear orientación');
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) document.body.classList.remove('fullscreen');
+    });
+
+    // ==================== STATUS ====================
+    function setStatus(msg, type = 'info') {
+        statusMsg.textContent = msg;
+        statusMsg.className = {
+            error: 'status-error', success: 'status-success',
+            warning: 'status-warning'
+        }[type] ?? 'status-info';
+    }
+
+    function setLoading(text) {
+        loadingText.textContent = text;
+        loadingOverlay.style.display = 'flex';
+    }
+
+    function hideLoading() {
+        loadingOverlay.style.display = 'none';
+    }
+
+    // ==================== ENUMERATE CAMERAS ====================
+    // FIX CÁMARA #1: Enumerar DESPUÉS de tener permisos para que los labels lleguen rellenos
+    async function enumerateCameras() {
+        try {
+            const devices = await navigator.mediaDevices.enumerateDevices();
+            deviceList = devices.filter(d => d.kind === 'videoinput');
+
+            cameraSelector.innerHTML = '';
+            deviceList.forEach((device, i) => {
+                const chip = document.createElement('div');
+                chip.className = 'cam-chip' + (device.deviceId === currentDeviceId ? ' active' : '');
+                chip.dataset.deviceId = device.deviceId;
+
+                let icon = '🎥';
+                let label = device.label || `Cámara ${i + 1}`;
+                const lbl = label.toLowerCase();
+                if (lbl.includes('front') || lbl.includes('user') || lbl.includes('frontal')) { icon = '🤳'; }
+                else if (lbl.includes('back') || lbl.includes('environment') || lbl.includes('rear') || lbl.includes('trasera')) { icon = '📷'; }
+
+                // Limpiar etiquetas largas
+                if (label.length > 22) label = label.substring(0, 20) + '…';
+                chip.innerHTML = `${icon} ${label}`;
+                chip.title = device.label || 'Sin nombre';
+                chip.addEventListener('click', () => {
+                    if (!isSwitching) switchCamera(device.deviceId);
                 });
-            }
-        }
-
-        function toggleOrientation() {
-            if (screen.orientation && screen.orientation.lock) {
-                const current = screen.orientation.type;
-                if (current.includes('landscape')) {
-                    screen.orientation.lock('portrait').catch(() => {});
-                } else {
-                    screen.orientation.lock('landscape').catch(() => {});
-                }
-            }
-        }
-
-        // ==================== FULLSCREEN ====================
-        function toggleFullscreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().then(() => {
-                    isFullscreen = true;
-                    body.classList.add('fullscreen');
-                }).catch(() => {
-                    // Fallback: simular fullscreen con CSS
-                    isFullscreen = true;
-                    body.classList.add('fullscreen');
-                });
-            } else {
-                exitFullscreen();
-            }
-        }
-
-        function exitFullscreen() {
-            if (document.fullscreenElement) {
-                document.exitFullscreen().catch(() => {});
-            }
-            isFullscreen = false;
-            body.classList.remove('fullscreen');
-        }
-
-        // ==================== STATUS ====================
-        function setStatus(msg, type = 'info') {
-            statusMsg.textContent = msg;
-            statusMsg.className = type === 'error' ? 'status-error' : (type === 'success' ? 'status-success' : (type === 'warning' ? 'status-warning' : 'status-info'));
-        }
-
-        function setLoading(text) {
-            loadingText.textContent = text;
-            loadingOverlay.style.display = 'flex';
-        }
-
-        function hideLoading() {
-            loadingOverlay.style.display = 'none';
-        }
-
-        // ==================== ENUMERAR CÁMARAS ====================
-        async function enumerateCameras() {
-            try {
-                const devices = await navigator.mediaDevices.enumerateDevices();
-                const videoDevices = devices.filter(d => d.kind === 'videoinput');
-                deviceList = videoDevices;
-
-                cameraSelector.innerHTML = '';
-                videoDevices.forEach((device, index) => {
-                    const chip = document.createElement('div');
-                    chip.className = 'cam-chip' + (index === 0 ? ' active' : '');
-                    chip.dataset.deviceId = device.deviceId;
-
-                    // Detectar frontal/trasera
-                    let icon = '🎥';
-                    let label = device.label || `Cámara ${index + 1}`;
-                    if (label.toLowerCase().includes('front') || label.toLowerCase().includes('user')) {
-                        icon = '🤳';
-                        label = 'Frontal';
-                    } else if (label.toLowerCase().includes('back') || label.toLowerCase().includes('environment') || label.toLowerCase().includes('rear')) {
-                        icon = '📷';
-                        label = 'Trasera';
-                    }
-
-                    chip.innerHTML = `${icon} ${label}`;
-                    chip.title = device.label || 'Cámara sin nombre';
-                    chip.addEventListener('click', () => switchCamera(device.deviceId));
-                    cameraSelector.appendChild(chip);
-                });
-
-                if (videoDevices.length > 0) {
-                    currentDeviceId = videoDevices[0].deviceId;
-                }
-            } catch (err) {
-                console.error('Error enumerando cámaras:', err);
-            }
-        }
-
-        // ==================== CAMBIAR CÁMARA ====================
-        async function switchCamera(deviceId) {
-            if (deviceId === currentDeviceId) return;
-            currentDeviceId = deviceId;
-
-            // Actualizar UI
-            document.querySelectorAll('.cam-chip').forEach(chip => {
-                chip.classList.toggle('active', chip.dataset.deviceId === deviceId);
+                cameraSelector.appendChild(chip);
             });
+        } catch (e) {
+            console.warn('enumerateCameras error:', e);
+        }
+    }
 
-            setLoading('Cambiando cámara...');
-            setStatus('🔄 Cambiando cámara...', 'warning');
+    function updateActiveChip(deviceId) {
+        document.querySelectorAll('.cam-chip').forEach(c => {
+            c.classList.toggle('active', c.dataset.deviceId === deviceId);
+        });
+    }
 
-            // Reiniciar cámara con nuevo deviceId
-            await restartCamera(deviceId);
+    // ==================== START CAMERA ====================
+    async function startCamera(deviceId) {
+        // Detener stream anterior limpiamente
+        if (currentStream) {
+            currentStream.getTracks().forEach(t => t.stop());
+            currentStream = null;
+            videoTrack = null;
         }
 
-        async function switchNextCamera() {
-            if (deviceList.length <= 1) return;
-            const currentIndex = deviceList.findIndex(d => d.deviceId === currentDeviceId);
-            const nextIndex = (currentIndex + 1) % deviceList.length;
-            await switchCamera(deviceList[nextIndex].deviceId);
-        }
+        // FIX CÁMARA #2: Construir constraints correctamente según si tenemos deviceId o no
+        // Si hay deviceId usamos exact, de lo contrario usamos facingMode como fallback
+        const videoConstraints = deviceId
+            ? { deviceId: { exact: deviceId }, width: { ideal: 1280 }, height: { ideal: 720 } }
+            : { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 } };
 
-        // ==================== INICIAR CÁMARA ====================
-        async function startCamera(deviceId = null) {
-            if (currentStream) {
-                currentStream.getTracks().forEach(t => t.stop());
-            }
-
-            const constraints = {
-                video: {
-                    width: { ideal: 1280 },
-                    height: { ideal: 720 },
-                    facingMode: deviceId ? undefined : 'user',
-                    deviceId: deviceId ? { exact: deviceId } : undefined
-                },
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({
+                video: videoConstraints,
                 audio: false
-            };
-
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia(constraints);
-                currentStream = stream;
-                video.srcObject = stream;
-                track = stream.getVideoTracks()[0];
-
-                // Image Capture API para controles avanzados
-                if (typeof ImageCapture !== 'undefined') {
-                    imageCapture = new ImageCapture(track);
-                    await setupCameraControls();
-                }
-
-                await video.play();
-                return true;
-            } catch (err) {
-                console.error('Error cámara:', err);
-                return false;
-            }
-        }
-
-        async function restartCamera(deviceId) {
-            // Detener MediaPipe temporalmente
-            isModelReady = false;
-
-            const success = await startCamera(deviceId);
-            if (success) {
-                // Reiniciar MediaPipe
-                if (camera) {
-                    camera.stop && camera.stop();
-                }
-                await initMediaPipe();
-            } else {
-                setStatus('❌ Error al cambiar cámara', 'error');
-                hideLoading();
-            }
-        }
-
-        // ==================== CONTROLES DE CÁMARA AVANZADOS ====================
-        async function setupCameraControls() {
-            if (!track) return;
-
-            try {
-                const capabilities = track.getCapabilities();
-                cameraCapabilities = capabilities;
-
-                // Zoom
-                if (capabilities.zoom) {
-                    zoomSlider.disabled = false;
-                    zoomSlider.min = capabilities.zoom.min;
-                    zoomSlider.max = capabilities.zoom.max;
-                    zoomSlider.step = capabilities.zoom.step || 0.1;
-                    zoomSlider.value = track.getSettings().zoom || capabilities.zoom.min;
-                    document.getElementById('zoomControl').style.display = 'block';
-                } else {
-                    zoomSlider.disabled = true;
-                    document.getElementById('zoomControl').style.display = 'none';
-                }
-
-                // ISO
-                if (capabilities.iso) {
-                    isoSlider.disabled = false;
-                    isoSlider.min = capabilities.iso.min;
-                    isoSlider.max = capabilities.iso.max;
-                    isoSlider.step = capabilities.iso.step || 50;
-                    isoSlider.value = track.getSettings().iso || capabilities.iso.min;
-                    document.getElementById('isoControl').style.display = 'block';
-                } else {
-                    isoSlider.disabled = true;
-                    document.getElementById('isoControl').style.display = 'none';
-                }
-
-                // Exposición
-                if (capabilities.exposureCompensation) {
-                    exposureSlider.disabled = false;
-                    exposureSlider.min = capabilities.exposureCompensation.min;
-                    exposureSlider.max = capabilities.exposureCompensation.max;
-                    exposureSlider.step = capabilities.exposureCompensation.step || 0.5;
-                    exposureSlider.value = track.getSettings().exposureCompensation || 0;
-                    document.getElementById('exposureControl').style.display = 'block';
-                } else {
-                    exposureSlider.disabled = true;
-                    document.getElementById('exposureControl').style.display = 'none';
-                }
-
-                // Balance de blancos
-                if (capabilities.colorTemperature) {
-                    wbSlider.disabled = false;
-                    wbSlider.min = capabilities.colorTemperature.min;
-                    wbSlider.max = capabilities.colorTemperature.max;
-                    wbSlider.step = capabilities.colorTemperature.step || 100;
-                    wbSlider.value = track.getSettings().colorTemperature || 4500;
-                    document.getElementById('wbControl').style.display = 'block';
-                } else {
-                    wbSlider.disabled = true;
-                    document.getElementById('wbControl').style.display = 'none';
-                }
-
-                // Brillo (solo en algunos dispositivos)
-                if (capabilities.brightness) {
-                    brightnessSlider.disabled = false;
-                    brightnessSlider.min = capabilities.brightness.min;
-                    brightnessSlider.max = capabilities.brightness.max;
-                    brightnessSlider.step = capabilities.brightness.step || 1;
-                    brightnessSlider.value = track.getSettings().brightness || 0;
-                    document.getElementById('brightnessControl').style.display = 'block';
-                } else {
-                    brightnessSlider.disabled = true;
-                    document.getElementById('brightnessControl').style.display = 'none';
-                }
-
-                // Contraste
-                if (capabilities.contrast) {
-                    contrastSlider.disabled = false;
-                    contrastSlider.min = capabilities.contrast.min;
-                    contrastSlider.max = capabilities.contrast.max;
-                    contrastSlider.step = capabilities.contrast.step || 1;
-                    contrastSlider.value = track.getSettings().contrast || 0;
-                    document.getElementById('contrastControl').style.display = 'block';
-                } else {
-                    contrastSlider.disabled = true;
-                    document.getElementById('contrastControl').style.display = 'none';
-                }
-
-                // Torch / Flash
-                if (capabilities.torch) {
-                    torchBtn.style.display = 'block';
-                } else {
-                    torchBtn.style.display = 'none';
-                }
-
-                // Focus
-                if (capabilities.focusMode) {
-                    focusBtn.style.display = 'block';
-                    focusBtn.classList.toggle('active', track.getSettings().focusMode === 'continuous');
-                } else {
-                    focusBtn.style.display = 'none';
-                }
-
-            } catch (e) {
-                console.warn('No se pudieron obtener capacidades de la cámara:', e);
-            }
-        }
-
-        // Aplicar configuración
-        async function applyConstraint(constraint, value) {
-            if (!track) return;
-            try {
-                await track.applyConstraints({ advanced: [{ [constraint]: value }] });
-            } catch (e) {
-                console.warn(`No se pudo aplicar ${constraint}:`, e);
-            }
-        }
-
-        zoomSlider.addEventListener('input', (e) => {
-            const val = parseFloat(e.target.value);
-            document.getElementById('zoomValue').textContent = val.toFixed(1) + 'x';
-            applyConstraint('zoom', val);
-        });
-
-        isoSlider.addEventListener('input', (e) => {
-            const val = parseInt(e.target.value);
-            document.getElementById('isoValue').textContent = val;
-            applyConstraint('iso', val);
-        });
-
-        exposureSlider.addEventListener('input', (e) => {
-            const val = parseFloat(e.target.value);
-            document.getElementById('exposureValue').textContent = (val > 0 ? '+' : '') + val;
-            applyConstraint('exposureCompensation', val);
-        });
-
-        wbSlider.addEventListener('input', (e) => {
-            const val = parseInt(e.target.value);
-            document.getElementById('wbValue').textContent = val + 'K';
-            applyConstraint('colorTemperature', val);
-        });
-
-        brightnessSlider.addEventListener('input', (e) => {
-            const val = parseInt(e.target.value);
-            document.getElementById('brightnessValue').textContent = val;
-            applyConstraint('brightness', val);
-        });
-
-        contrastSlider.addEventListener('input', (e) => {
-            const val = parseInt(e.target.value);
-            document.getElementById('contrastValue').textContent = val;
-            applyConstraint('contrast', val);
-        });
-
-        torchBtn.addEventListener('click', async () => {
-            if (!track || !cameraCapabilities.torch) return;
-            const isActive = torchBtn.classList.contains('active');
-            await applyConstraint('torch', !isActive);
-            torchBtn.classList.toggle('active', !isActive);
-        });
-
-        focusBtn.addEventListener('click', async () => {
-            if (!track || !cameraCapabilities.focusMode) return;
-            const isActive = focusBtn.classList.contains('active');
-            const mode = isActive ? 'manual' : 'continuous';
-            await applyConstraint('focusMode', mode);
-            focusBtn.classList.toggle('active', !isActive);
-        });
-
-        // ==================== MEDIAPIPE ====================
-        async function initMediaPipe() {
-            setLoading('Cargando modelo de IA...');
-
-            selfieSegmentation = new SelfieSegmentation({
-                locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`
             });
 
-            selfieSegmentation.setOptions({
-                modelSelection: 1, // Modelo más preciso
-                minDetectionConfidence: 0.7,
-            });
+            currentStream = stream;
+            videoTrack = stream.getVideoTracks()[0];
 
-            selfieSegmentation.onResults(drawResults);
+            // Leer el deviceId real que se asignó (puede diferir del solicitado)
+            const settings = videoTrack.getSettings();
+            currentDeviceId = settings.deviceId ?? deviceId;
 
-            camera = new Camera(video, {
-                onFrame: async () => {
-                    if (isModelReady && selfieSegmentation) {
-                        try {
-                            await selfieSegmentation.send({ image: video });
-                        } catch (e) {
-                            console.warn("Error en frame:", e);
-                        }
-                    }
-                },
-                width: 1280,
-                height: 720
-            });
+            video.srcObject = stream;
+            await video.play();
 
-            await camera.start();
-            isModelReady = true;
-            captureBtn.disabled = false;
-            mobileCaptureBtn.disabled = false;
+            return true;
+        } catch (err) {
+            console.error('startCamera error:', err.name, err.message);
+            // FIX: Si falla con exact, reintentar sin exact (algunos browsers lo necesitan)
+            if (deviceId && err.name === 'OverconstrainedError') {
+                console.warn('Reintentando sin exact deviceId...');
+                return startCamera(null);
+            }
+            return false;
+        }
+    }
+
+    // ==================== SWITCH CAMERA ====================
+    // FIX CÁMARA #3: Secuencia correcta de parada/reinicio sin instancias duplicadas
+    async function switchCamera(deviceId) {
+        if (deviceId === currentDeviceId || isSwitching) return;
+        isSwitching = true;
+
+        updateActiveChip(deviceId);
+        setLoading('Cambiando cámara…');
+        setStatus('🔄 Cambiando cámara…', 'warning');
+
+        // 1. Parar MediaPipe primero — evita frames del stream antiguo entrando
+        if (mpCamera) {
+            try { await mpCamera.stop(); } catch (e) {}
+            mpCamera = null;
+        }
+
+        // 2. Cambiar stream
+        const ok = await startCamera(deviceId);
+        if (!ok) {
+            setStatus('❌ No se pudo cambiar de cámara', 'error');
             hideLoading();
-            setStatus('🟢 Todo listo. Posiciónate frente a la cámara.', 'success');
-            recordingDot.style.display = 'block';
+            isSwitching = false;
+            return;
         }
 
-        // ==================== RENDERIZADO ====================
-        function drawResults(results) {
-            if (!results || !results.segmentationMask) {
-                ctx.fillStyle = '#222';
-                ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-                return;
-            }
+        updateActiveChip(currentDeviceId);
 
-            // Guardar frame original para captura
-            ctx.drawImage(video, 0, 0, canvasWidth, canvasHeight);
-            lastVideoFrame = ctx.getImageData(0, 0, canvasWidth, canvasHeight);
+        // 3. Configurar controles para el nuevo track
+        await setupCameraControls();
 
-            // Limpiar y aplicar máscara
-            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-            ctx.drawImage(results.segmentationMask, 0, 0, canvasWidth, canvasHeight);
+        // 4. Reiniciar MediaPipe con el nuevo stream
+        // FIX: NO crear nueva instancia de SelfieSegmentation — es muy costoso
+        // Solo reiniciar el Camera wrapper de MediaPipe
+        startMpCamera();
 
-            // Dibujar persona (source-in)
-            ctx.globalCompositeOperation = 'source-in';
-            ctx.drawImage(video, 0, 0, canvasWidth, canvasHeight);
+        hideLoading();
+        setStatus('✅ Cámara cambiada correctamente', 'success');
+        isSwitching = false;
+    }
 
-            // Dibujar fondo (destination-over)
-            ctx.globalCompositeOperation = 'destination-over';
-            if (backgroundImage) {
-                ctx.drawImage(backgroundImage, 0, 0, canvasWidth, canvasHeight);
-            } else {
-                ctx.fillStyle = bgColor;
-                ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-            }
-            ctx.globalCompositeOperation = 'source-over';
+    async function switchNextCamera() {
+        if (deviceList.length <= 1 || isSwitching) return;
+        const idx = deviceList.findIndex(d => d.deviceId === currentDeviceId);
+        const next = deviceList[(idx + 1) % deviceList.length];
+        await switchCamera(next.deviceId);
+    }
 
-            // FPS counter
-            frameCount++;
-            const now = performance.now();
-            if (now - lastFpsTime >= 1000) {
-                fpsCounter.textContent = frameCount + ' fps';
-                frameCount = 0;
-                lastFpsTime = now;
-            }
-        }
-
-        // ==================== FONDOS ====================
-        document.querySelectorAll('.bg-color-swatch').forEach(swatch => {
-            swatch.addEventListener('click', () => {
-                document.querySelectorAll('.bg-color-swatch').forEach(s => s.classList.remove('active'));
-                swatch.classList.add('active');
-                const color = swatch.dataset.color;
-                if (color === 'transparent') {
-                    bgColor = 'transparent';
-                } else {
-                    bgColor = color;
-                }
-                backgroundImage = null;
-                setStatus('🎨 Fondo cambiado', 'success');
-            });
+    // ==================== MEDIAPIPE SETUP ====================
+    // FIX RENDIMIENTO #4: Crear SelfieSegmentation una sola vez y reusar
+    async function initSelfieSegmentation() {
+        selfieSegmentation = new SelfieSegmentation({
+            locateFile: f => `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${f}`
         });
 
-        bgUpload.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (ev) => {
-                const img = new Image();
-                img.onload = () => {
-                    backgroundImage = img;
-                    document.querySelectorAll('.bg-color-swatch').forEach(s => s.classList.remove('active'));
-                    setStatus('🖼️ Fondo personalizado cargado', 'success');
-                };
-                img.src = ev.target.result;
+        selfieSegmentation.setOptions({
+            modelSelection: 1,
+            selfieMode: true,
+        });
+
+        selfieSegmentation.onResults(drawResults);
+
+        // Calentar el modelo con un frame vacío
+        await selfieSegmentation.initialize();
+    }
+
+    // FIX RENDIMIENTO #5: Camera de MediaPipe separada de initSelfieSegmentation
+    // para poder reiniciarla sin recrear el modelo
+    function startMpCamera() {
+        if (mpCamera) {
+            try { mpCamera.stop(); } catch(e) {}
+            mpCamera = null;
+        }
+
+        let lastSendTime = 0;
+
+        mpCamera = new Camera(video, {
+            onFrame: async () => {
+                // FIX RENDIMIENTO #6: Throttle — saltar frames si el anterior no terminó
+                // o si no ha pasado suficiente tiempo
+                const now = performance.now();
+                if (isProcessing || (now - lastSendTime) < FRAME_INTERVAL) return;
+
+                if (!selfieSegmentation || !video.readyState || video.readyState < 2) return;
+
+                isProcessing = true;
+                lastSendTime = now;
+
+                try {
+                    // FIX RENDIMIENTO #7: Enviar canvas pequeño en lugar del video completo
+                    processCtx.drawImage(video, 0, 0, PROCESS_W, PROCESS_H);
+                    await selfieSegmentation.send({ image: processCanvas });
+                } catch (e) {
+                    console.warn('MP frame error:', e);
+                } finally {
+                    isProcessing = false;
+                }
+            },
+            width: PROCESS_W,
+            height: PROCESS_H
+        });
+
+        mpCamera.start().catch(e => console.error('mpCamera.start error:', e));
+    }
+
+    // ==================== DRAW ====================
+    function drawResults(results) {
+        if (!results?.segmentationMask) return;
+
+        // FIX RENDIMIENTO #8: Dibujar siempre a resolución de output (1280x720)
+        // pero el proceso de IA fue en 640x360 — la máscara se escala automáticamente
+
+        ctx.clearRect(0, 0, OUTPUT_W, OUTPUT_H);
+
+        // Paso 1: dibujar la máscara
+        ctx.drawImage(results.segmentationMask, 0, 0, OUTPUT_W, OUTPUT_H);
+
+        // Paso 2: cortar solo la persona (source-in)
+        ctx.globalCompositeOperation = 'source-in';
+        ctx.drawImage(video, 0, 0, OUTPUT_W, OUTPUT_H);
+
+        // Paso 3: dibujar el fondo detrás (destination-over)
+        ctx.globalCompositeOperation = 'destination-over';
+        if (backgroundImage) {
+            ctx.drawImage(backgroundImage, 0, 0, OUTPUT_W, OUTPUT_H);
+        } else if (bgColor === 'transparent') {
+            // fondo transparente = canvas limpio, ya está
+        } else {
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0, 0, OUTPUT_W, OUTPUT_H);
+        }
+
+        ctx.globalCompositeOperation = 'source-over';
+
+        // FPS
+        frameCount++;
+        const now = performance.now();
+        if (now - fpsTimestamp >= 1000) {
+            fpsCounter.textContent = frameCount + ' fps';
+            frameCount = 0;
+            fpsTimestamp = now;
+        }
+    }
+
+    // ==================== CAMERA CONTROLS ====================
+    async function setupCameraControls() {
+        if (!videoTrack) return;
+
+        // Limpiar estado visual
+        document.getElementById('zoomControl').style.display = 'none';
+        document.getElementById('exposureControl').style.display = 'none';
+        document.getElementById('wbControl').style.display = 'none';
+        document.getElementById('brightnessControl').style.display = 'none';
+        document.getElementById('contrastControl').style.display = 'none';
+        torchBtn.style.display = 'none';
+        focusBtn.style.display = 'none';
+
+        try {
+            const caps = videoTrack.getCapabilities?.() ?? {};
+            cameraCapabilities = caps;
+            const settings = videoTrack.getSettings?.() ?? {};
+            let anyControl = false;
+
+            if (caps.zoom) {
+                zoomSlider.min = caps.zoom.min; zoomSlider.max = caps.zoom.max;
+                zoomSlider.step = caps.zoom.step || 0.1;
+                zoomSlider.value = settings.zoom ?? caps.zoom.min;
+                document.getElementById('zoomValue').textContent = parseFloat(zoomSlider.value).toFixed(1) + 'x';
+                document.getElementById('zoomControl').style.display = 'block';
+                anyControl = true;
+            }
+            if (caps.exposureCompensation) {
+                exposureSlider.min = caps.exposureCompensation.min; exposureSlider.max = caps.exposureCompensation.max;
+                exposureSlider.step = caps.exposureCompensation.step || 0.5;
+                exposureSlider.value = settings.exposureCompensation ?? 0;
+                document.getElementById('exposureValue').textContent = parseFloat(exposureSlider.value);
+                document.getElementById('exposureControl').style.display = 'block';
+                anyControl = true;
+            }
+            if (caps.colorTemperature) {
+                wbSlider.min = caps.colorTemperature.min; wbSlider.max = caps.colorTemperature.max;
+                wbSlider.step = caps.colorTemperature.step || 100;
+                wbSlider.value = settings.colorTemperature ?? 4500;
+                document.getElementById('wbValue').textContent = parseInt(wbSlider.value) + 'K';
+                document.getElementById('wbControl').style.display = 'block';
+                anyControl = true;
+            }
+            if (caps.brightness) {
+                brightnessSlider.min = caps.brightness.min; brightnessSlider.max = caps.brightness.max;
+                brightnessSlider.step = caps.brightness.step || 1;
+                brightnessSlider.value = settings.brightness ?? 0;
+                document.getElementById('brightnessValue').textContent = brightnessSlider.value;
+                document.getElementById('brightnessControl').style.display = 'block';
+                anyControl = true;
+            }
+            if (caps.contrast) {
+                contrastSlider.min = caps.contrast.min; contrastSlider.max = caps.contrast.max;
+                contrastSlider.step = caps.contrast.step || 1;
+                contrastSlider.value = settings.contrast ?? 0;
+                document.getElementById('contrastValue').textContent = contrastSlider.value;
+                document.getElementById('contrastControl').style.display = 'block';
+                anyControl = true;
+            }
+            if (caps.torch) { torchBtn.style.display = 'block'; anyControl = true; }
+            if (caps.focusMode?.length) { focusBtn.style.display = 'block'; anyControl = true; }
+
+            noControlsMsg.style.display = anyControl ? 'none' : 'block';
+        } catch (e) {
+            console.warn('setupCameraControls:', e);
+            noControlsMsg.style.display = 'block';
+        }
+    }
+
+    async function applyConstraint(name, value) {
+        if (!videoTrack) return;
+        try {
+            await videoTrack.applyConstraints({ advanced: [{ [name]: value }] });
+        } catch (e) {
+            console.warn(`applyConstraint(${name}):`, e);
+        }
+    }
+
+    zoomSlider.addEventListener('input', e => {
+        document.getElementById('zoomValue').textContent = parseFloat(e.target.value).toFixed(1) + 'x';
+        applyConstraint('zoom', parseFloat(e.target.value));
+    });
+    exposureSlider.addEventListener('input', e => {
+        const v = parseFloat(e.target.value);
+        document.getElementById('exposureValue').textContent = (v > 0 ? '+' : '') + v;
+        applyConstraint('exposureCompensation', v);
+    });
+    wbSlider.addEventListener('input', e => {
+        document.getElementById('wbValue').textContent = parseInt(e.target.value) + 'K';
+        applyConstraint('colorTemperature', parseInt(e.target.value));
+    });
+    brightnessSlider.addEventListener('input', e => {
+        document.getElementById('brightnessValue').textContent = e.target.value;
+        applyConstraint('brightness', parseInt(e.target.value));
+    });
+    contrastSlider.addEventListener('input', e => {
+        document.getElementById('contrastValue').textContent = e.target.value;
+        applyConstraint('contrast', parseInt(e.target.value));
+    });
+
+    torchBtn.addEventListener('click', async () => {
+        if (!cameraCapabilities.torch) return;
+        const on = !torchBtn.classList.contains('active');
+        await applyConstraint('torch', on);
+        torchBtn.classList.toggle('active', on);
+    });
+
+    focusBtn.addEventListener('click', async () => {
+        if (!cameraCapabilities.focusMode) return;
+        const continuous = !focusBtn.classList.contains('active');
+        await applyConstraint('focusMode', continuous ? 'continuous' : 'manual');
+        focusBtn.classList.toggle('active', continuous);
+    });
+
+    // ==================== BACKGROUNDS ====================
+    document.querySelectorAll('.bg-color-swatch').forEach(s => {
+        s.addEventListener('click', () => {
+            document.querySelectorAll('.bg-color-swatch').forEach(x => x.classList.remove('active'));
+            s.classList.add('active');
+            bgColor = s.dataset.color === 'transparent' ? 'transparent' : s.dataset.color;
+            backgroundImage = null;
+        });
+    });
+
+    bgUpload.addEventListener('change', e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = ev => {
+            const img = new Image();
+            img.onload = () => {
+                backgroundImage = img;
+                document.querySelectorAll('.bg-color-swatch').forEach(x => x.classList.remove('active'));
+                setStatus('🖼️ Fondo personalizado cargado', 'success');
             };
-            reader.readAsDataURL(file);
-        });
+            img.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
 
-        // ==================== CAPTURA ====================
-        function doCapture() {
-            if (!lastVideoFrame) {
-                setStatus('⚠️ Aún no hay imagen. Espera un momento...', 'warning');
-                return;
-            }
-
-            // Original
-            const origCanvas = document.createElement('canvas');
-            origCanvas.width = 1280;
-            origCanvas.height = 720;
-            origCanvas.getContext('2d').putImageData(lastVideoFrame, 0, 0);
-            const originalBlob = dataURLToBlob(origCanvas.toDataURL('image/jpeg', 0.92));
-
-            // Editada
-            const editCanvas = document.createElement('canvas');
-            editCanvas.width = 1280;
-            editCanvas.height = 720;
-            editCanvas.getContext('2d').drawImage(canvas, 0, 0, 1280, 720);
-            const editedBlob = dataURLToBlob(editCanvas.toDataURL('image/jpeg', 0.92));
-
-            createDownload(originalBlob, dlOrig, previewOrig, 'original_720p.jpg');
-            createDownload(editedBlob, dlEdit, previewEdit, 'editada_720p.jpg');
-
-            document.getElementById('downloadSection').classList.add('show');
-            setStatus('✅ ¡Captura completada!', 'success');
-
-            // Feedback visual
-            cameraWrapper.style.boxShadow = '0 0 0 4px var(--success)';
-            setTimeout(() => cameraWrapper.style.boxShadow = '', 300);
+    // ==================== CAPTURE ====================
+    function doCapture() {
+        if (!video.videoWidth) {
+            setStatus('⚠️ Aún no hay imagen disponible', 'warning');
+            return;
         }
 
-        captureBtn.addEventListener('click', doCapture);
-        mobileCaptureBtn.addEventListener('click', doCapture);
+        // Original — leer directo del video (no de getImageData — es más rápido)
+        const origCanvas = document.createElement('canvas');
+        origCanvas.width = OUTPUT_W; origCanvas.height = OUTPUT_H;
+        origCanvas.getContext('2d').drawImage(video, 0, 0, OUTPUT_W, OUTPUT_H);
 
-        const previewOrig = document.getElementById('previewOriginal');
-        const previewEdit = document.getElementById('previewEdited');
-        const dlOrig = document.getElementById('downloadOriginal');
-        const dlEdit = document.getElementById('downloadEdited');
+        // Editada — copia del canvas de salida
+        const editCanvas = document.createElement('canvas');
+        editCanvas.width = OUTPUT_W; editCanvas.height = OUTPUT_H;
+        editCanvas.getContext('2d').drawImage(canvas, 0, 0, OUTPUT_W, OUTPUT_H);
 
-        function dataURLToBlob(dataURL) {
-            const parts = dataURL.split(';base64,');
-            const raw = atob(parts[1]);
-            const uInt8Array = new Uint8Array(raw.length);
-            for (let i = 0; i < raw.length; ++i) uInt8Array[i] = raw.charCodeAt(i);
-            return new Blob([uInt8Array], { type: parts[0].split(':')[1] });
+        const origURL = origCanvas.toDataURL('image/jpeg', 0.92);
+        const editURL = editCanvas.toDataURL('image/jpeg', 0.92);
+
+        document.getElementById('previewOriginal').src = origURL;
+        document.getElementById('downloadOriginal').href = origURL;
+        document.getElementById('previewEdited').src = editURL;
+        document.getElementById('downloadEdited').href = editURL;
+        document.getElementById('downloadSection').classList.add('show');
+
+        setStatus('✅ ¡Captura lista!', 'success');
+        cameraWrapper.style.outline = '3px solid var(--success)';
+        setTimeout(() => cameraWrapper.style.outline = '', 350);
+    }
+
+    captureBtn.addEventListener('click', doCapture);
+    mobileCaptureBtn.addEventListener('click', doCapture);
+
+    // ==================== UI EVENTS ====================
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    exitFsBtn.addEventListener('click', () => {
+        document.exitFullscreen?.().catch(() => {});
+        document.body.classList.remove('fullscreen');
+    });
+    rotateBtn.addEventListener('click', toggleOrientation);
+    mobileSwitchCam.addEventListener('click', () => switchNextCamera());
+
+    sidebarHandle.addEventListener('click', () => sidebar.classList.toggle('open'));
+    mobileSettingsBtn.addEventListener('click', () => sidebar.classList.toggle('open'));
+    mobileBgBtn.addEventListener('click', () => {
+        sidebar.classList.add('open');
+        document.querySelector('.section:nth-child(3)')?.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.addEventListener('click', e => {
+        if (isMobile && sidebar.classList.contains('open')) {
+            if (!sidebar.contains(e.target) && !mobileSettingsBtn.contains(e.target) && !mobileBgBtn.contains(e.target)) {
+                sidebar.classList.remove('open');
+            }
+        }
+    });
+
+    // ==================== INIT ====================
+    async function init() {
+        detectDevice();
+
+        if (!window.isSecureContext && location.hostname !== 'localhost') {
+            setStatus('❌ Se requiere HTTPS. Usa GitHub Pages, Netlify o localhost.', 'error');
+            hideLoading();
+            return;
         }
 
-        function createDownload(blob, anchorElement, imgPreview, filename) {
-            const url = URL.createObjectURL(blob);
-            anchorElement.href = url;
-            anchorElement.download = filename;
-            imgPreview.src = url;
+        if (!navigator.mediaDevices?.getUserMedia) {
+            setStatus('❌ Tu navegador no soporta acceso a cámara.', 'error');
+            hideLoading();
+            return;
         }
 
-        // ==================== EVENTOS UI ====================
-        fullscreenBtn.addEventListener('click', toggleFullscreen);
-        exitFsBtn.addEventListener('click', exitFullscreen);
-        rotateBtn.addEventListener('click', toggleOrientation);
-        mobileSwitchCam.addEventListener('click', switchNextCamera);
+        setLoading('Solicitando permisos…');
+        setStatus('⏳ Solicitando permisos de cámara…');
 
-        // Sidebar móvil
-        sidebarHandle.addEventListener('click', () => {
-            sidebar.classList.toggle('open');
-        });
-
-        mobileSettingsBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('open');
-        });
-
-        mobileBgBtn.addEventListener('click', () => {
-            sidebar.classList.add('open');
-            // Scroll a sección de fondo
-            const bgSection = document.querySelector('.section:nth-child(3)');
-            if (bgSection) bgSection.scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // Cerrar sidebar al tocar fuera (móvil)
-        document.addEventListener('click', (e) => {
-            if (isMobile && sidebar.classList.contains('open')) {
-                if (!sidebar.contains(e.target) && !mobileSettingsBtn.contains(e.target) && !mobileBgBtn.contains(e.target)) {
-                    sidebar.classList.remove('open');
-                }
-            }
-        });
-
-        // ==================== INICIALIZACIÓN ====================
-        async function init() {
-            detectDevice();
-
-            // Validación de seguridad
-            if (!window.isSecureContext && window.location.hostname !== 'localhost') {
-                setStatus('❌ ERROR: Se requiere HTTPS para acceder a la cámara. Sube a GitHub Pages o usa ngrok.', 'error');
-                hideLoading();
-                return;
-            }
-
-            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-                setStatus('❌ ERROR: Tu navegador no soporta acceso a cámara.', 'error');
-                hideLoading();
-                return;
-            }
-
-            setStatus('⏳ Solicitando permisos...');
-
-            // Enumerar cámaras
-            await enumerateCameras();
-
-            // Iniciar cámara
-            const camSuccess = await startCamera();
-            if (!camSuccess) {
-                setStatus('❌ No se pudo acceder a la cámara. Verifica los permisos.', 'error');
-                hideLoading();
-                return;
-            }
-
-            // Iniciar MediaPipe
-            await initMediaPipe();
+        // FIX CÁMARA #4: Pedir permiso primero con constraints mínimos
+        // DESPUÉS enumerar (así los labels llegan con nombre real)
+        const ok = await startCamera(null);
+        if (!ok) {
+            setStatus('❌ No se pudo acceder a la cámara. Verifica los permisos del navegador.', 'error');
+            hideLoading();
+            return;
         }
 
-        init();
+        // Ahora sí enumerar — con permisos ya concedidos los labels tienen nombres reales
+        await enumerateCameras();
+        updateActiveChip(currentDeviceId);
+        await setupCameraControls();
 
-        // Manejar cambio de orientación
-        window.addEventListener('orientationchange', () => {
-            setTimeout(() => {
-                if (isMobile) {
-                    // Reajustar canvas si es necesario
-                    const isLandscapeNow = Math.abs(window.orientation) === 90;
-                    isLandscape = isLandscapeNow;
-                }
-            }, 300);
-        });
+        setLoading('Cargando modelo de IA…');
+
+        // Inicializar modelo una sola vez
+        await initSelfieSegmentation();
+
+        // Arrancar el loop de MediaPipe
+        startMpCamera();
+
+        captureBtn.disabled = false;
+        mobileCaptureBtn.disabled = false;
+        recordingDot.style.display = 'block';
+        hideLoading();
+        setStatus('🟢 Listo. Posiciónate frente a la cámara.', 'success');
+    }
+
+    init();
     </script>
 </body>
 </html>
