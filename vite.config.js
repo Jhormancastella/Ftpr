@@ -1,2 +1,2 @@
 import { defineConfig } from 'vite';
-export default defineConfig({ base: './', publicDir: 'public' });
+export default defineConfig({ base: '/Ftpr/', publicDir: 'public' });
