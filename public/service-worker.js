@@ -1,5 +1,6 @@
-const CACHE = 'ftpr-studio-v1';
-const APP_SHELL = ['./', './index.html', './manifest.json'];
+const CACHE = 'ftpr-studio-v2';
+const BASE = '/Ftpr/';
+const APP_SHELL = [BASE, BASE + 'index.html', BASE + 'manifest.json'];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting())));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim())));
 self.addEventListener('fetch', event => {
@@ -9,5 +10,5 @@ self.addEventListener('fetch', event => {
       const copy = response.clone(); caches.open(CACHE).then(cache => cache.put(event.request, copy));
     }
     return response;
-  }).catch(() => caches.match('./index.html'))));
+  }).catch(() => caches.match(BASE + 'index.html'))));
 });
