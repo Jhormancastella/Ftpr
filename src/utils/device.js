@@ -1,0 +1,1 @@
+export function deviceLabel(device,index){const label=device.label||`Cámara ${index+1}`;const lower=label.toLowerCase();let icon='🎥';if(/front|user|frontal|selfie/.test(lower))icon='🤳';if(/back|rear|environment|trasera/.test(lower))icon='📷';return {icon,label:label.length>28?`${label.slice(0,25)}…`:label}}

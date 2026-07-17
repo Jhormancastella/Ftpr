@@ -1,0 +1,1 @@
+export function bindToolbar({onFullscreen,onRotate,onPanel}){document.querySelector('#fullscreenBtn').addEventListener('click',onFullscreen);document.querySelector('#rotateBtn').addEventListener('click',onRotate);document.querySelector('#panelBtn')?.addEventListener('click',onPanel)}
