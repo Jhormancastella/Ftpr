@@ -1,0 +1,3 @@
+import {listCaptures,deleteCapture} from '../utils/storage.js';import {formatDate,escapeHtml} from '../utils/helpers.js';
+export async function renderGallery(container){const records=await listCaptures();if(!records.length){container.innerHTML='<p class="empty">Aún no hay fotografías guardadas.</p>';return records}container.innerHTML=records.map(record=>`<article class="gallery-card"><img src="${record.edited}" alt="Captura del ${escapeHtml(formatDate(record.createdAt))}"><a href="${record.edited}" download="ftpr-${record.id}.jpg">⬇ Descargar · ${escapeHtml(formatDate(record.createdAt))}</a></article>`).join('');return records}
+export {deleteCapture}

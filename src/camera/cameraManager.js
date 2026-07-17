@@ -1,0 +1,5 @@
+import {state} from '../state.js';import {listVideoDevices} from './cameraDevices.js';import {getCapabilities} from './cameraControls.js';
+export async function openCamera(deviceId=null){closeCamera();const video=deviceId?{deviceId:{exact:deviceId},width:{ideal:1280},height:{ideal:720}}:{facingMode:'user',width:{ideal:1280},height:{ideal:720}};try{state.camera.stream=await navigator.mediaDevices.getUserMedia({video,audio:false});state.camera.track=state.camera.stream.getVideoTracks()[0];state.camera.activeDeviceId=state.camera.track.getSettings().deviceId||deviceId;state.camera.ready=true;getCapabilities();return state.camera.stream}catch(error){if(deviceId&&error.name==='OverconstrainedError')return openCamera();throw error}}
+export function closeCamera(){state.camera.stream?.getTracks().forEach(track=>track.stop());state.camera.stream=null;state.camera.track=null;state.camera.ready=false}
+export async function refreshDevices(){return listVideoDevices()}
+export async function switchCamera(deviceId){return openCamera(deviceId)}
